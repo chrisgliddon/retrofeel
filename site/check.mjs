@@ -75,4 +75,9 @@ assert(readFileSync(join(root, '_redirects'), 'utf8').includes(
   '/privacy.html /privacy/ 301'));
 console.log(`PASS: ${built.length} public files, ${total} bytes; links, fonts, branding, private contact and asset contract.`);
 
-assert(!readFileSync(join(root, 'index.html'), 'utf8').includes('github.com/'), 'Repository link must be disabled by default');
+const sourceURL = readFileSync(join(import.meta.dirname, 'hugo.toml'), 'utf8')
+  .match(/^repositoryURL\s*=\s*'([^']*)'/m)?.[1];
+assert.notEqual(sourceURL, undefined, 'Declare the optional repositoryURL setting');
+const homepage = readFileSync(join(root, 'index.html'), 'utf8');
+assert(sourceURL ? homepage.includes(sourceURL) : !homepage.includes('github.com/'),
+  'Published source link must follow repositoryURL');

@@ -5,7 +5,7 @@ enableRobotsTXT = true
 disableKinds = ['taxonomy', 'term', 'RSS']
 
 [params]
-repositoryURL = '' # Optional source link; leave empty while the repository is private.
+repositoryURL = 'https://github.com/chrisgliddon/retrofeel' # Optional; set empty to hide.
 description = 'Give your coding agent clearer playtest feedback. RetroFeel brings gameplay, input timing, and spoken notes together so you can explain what needs to change.'
 
 [[module.mounts]]

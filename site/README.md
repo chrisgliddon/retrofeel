@@ -51,9 +51,9 @@ rate limits, and fail-closed delivery. Success means provider acceptance; it doe
 not prove inbox arrival. No automatic retry occurs after an ambiguous error.
 Review operator-specific privacy/contact statements before a deployment.
 
-`params.repositoryURL` in `hugo.toml` is optional and empty by default. Enable it
-only when the repository is ready to be linked publicly. The current configuration
-has no automatic publishing or deployment command.
+`params.repositoryURL` in `hugo.toml` links to the public source repository. Set
+it to an empty string to hide the link in a private deployment. There is no
+automatic publishing or deployment command.
 
 ## Licenses and assets
 
