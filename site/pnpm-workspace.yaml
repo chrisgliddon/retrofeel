@@ -1,0 +1,12 @@
+# Use the exact package manager declared in package.json on every machine.
+pmOnFail: download
+engineStrict: true
+verifyDepsBeforeRun: error
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
+strictDepBuilds: true
+# Native binaries arrive in integrity-checked optional packages; no install scripts needed.
+allowBuilds:
+  esbuild: false
+  sharp: false
+  workerd: false

@@ -2,17 +2,31 @@
   "name": "retrofeel-site",
   "private": true,
   "scripts": {
-    "build": "hugo --minify --panicOnWarning",
-    "check": "npm run build && node check.mjs && node --test worker.test.mjs && wrangler deploy --dry-run",
-    "preview": "wrangler dev --ip 127.0.0.1 --port 8797",
-    "check:browser": "node check-browser.mjs",
-    "check:contact": "node check-contact.mjs",
-    "preview:contact": "wrangler dev --config wrangler.test.jsonc --ip 127.0.0.1 --port 8797",
-    "check:a11y": "node check-a11y.mjs"
+    "build": "node require-pnpm.mjs && hugo --minify --panicOnWarning",
+    "check": "node require-pnpm.mjs && pnpm run build && node --test require-pnpm.test.mjs && node check.mjs && node --test worker.test.mjs && wrangler deploy --dry-run",
+    "preview": "node require-pnpm.mjs && wrangler dev --ip 127.0.0.1 --port 8797",
+    "check:browser": "node require-pnpm.mjs && node check-browser.mjs",
+    "check:contact": "node require-pnpm.mjs && node check-contact.mjs",
+    "preview:contact": "node require-pnpm.mjs && wrangler dev --config wrangler.test.jsonc --ip 127.0.0.1 --port 8797",
+    "check:a11y": "node require-pnpm.mjs && node check-a11y.mjs",
+    "preinstall": "node require-pnpm.mjs",
+    "check:tooling": "node require-pnpm.mjs && node --test require-pnpm.test.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
     "playwright": "1.59.1",
-    "wrangler": "4.127.1"
+    "wrangler": "4.131.1"
+  },
+  "packageManager": "pnpm@11.27.0",
+  "engines": {
+    "node": ">=22.13.0",
+    "pnpm": "11.27.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.27.0",
+      "onFail": "error"
+    }
   }
 }

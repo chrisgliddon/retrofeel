@@ -5,19 +5,29 @@ The approved Variant Hunter story, original logo, and local Barlow fonts are ret
 
 ## Build and check
 
-Use Node.js 22+ and Hugo 0.164.0. From this directory:
+Use Node.js 22.13+ and Hugo 0.164.0. Use **pnpm exclusively** on local machines
+and Ubuntu Servers. `packageManager` pins pnpm 11.27.0; pnpm 11 automatically uses
+that version in this directory. Installs and all package scripts reject other
+managers or conflicting lockfiles. Keep only `pnpm-lock.yaml` committed. Scripts fail when dependencies are stale;
+run the explicit frozen install instead of allowing implicit dependency changes.
+
+Dependency install scripts are explicitly denied, unreviewed new scripts fail the
+install, and new package versions must be at least 24 hours old. Review dependency
+and lockfile changes; do not bypass these settings or ignore audit findings.
+From this directory:
 
 ```sh
-npm ci --ignore-scripts
-npm run check
-npx playwright install chromium
-npm run preview
+pnpm install --frozen-lockfile
+pnpm run check
+pnpm audit
+pnpm exec playwright install chromium
+pnpm run preview
 # In another terminal:
-npm run check:browser
+pnpm run check:browser
 ```
 
-Stop the preview, then run `npm run preview:contact` and, in another terminal,
-`npm run check:contact`. This configuration simulates email locally using fictional
+Stop the preview, then run `pnpm run preview:contact` and, in another terminal,
+`pnpm run check:contact`. This configuration simulates email locally using fictional
 addresses. Never deploy `wrangler.test.jsonc`. Contact tests reject remote hosts.
 Checks cover responsive layout, font loading, local links, CSP, native form delivery,
 escaping, rate limits, missing configuration, and exact license-table fidelity.
@@ -58,7 +68,7 @@ and [Email Sending bindings](https://developers.cloudflare.com/email-service/con
 
 ## Screenshots and accessibility checks
 
-`npm run check:a11y` runs axe WCAG A/AA checks, color contrast, a project minimum
+`pnpm run check:a11y` runs axe WCAG A/AA checks, color contrast, a project minimum
 text size of 14px, and 200% text resizing. Body and form text use at least 16px.
 These automated checks complement the keyboard and responsive browser checks;
 they are not a claim of complete accessibility conformance.

@@ -34,3 +34,9 @@ The candidate is verified with Rust 1.96.0 on Ubuntu 24.04. Use `--locked`:
 `sherpa-onnx` and `sherpa-onnx-sys` must remain on matching 1.13.4 versions.
 The native transcription libraries require a recent C++ runtime. Linux build
 dependencies also include `liblzma-dev` for the locked compression dependency.
+
+Use pnpm exclusively for JavaScript tooling on local machines and Ubuntu Servers.
+Use the version pinned in `site/package.json`, install with
+`pnpm install --frozen-lockfile`, and use `pnpm run` / `pnpm exec` for commands.
+Do not add npm, Yarn, or Bun lockfiles or bypass the package manager checks.
+See [website tooling](../site/README.md) for the dependency policy.
