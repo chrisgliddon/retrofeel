@@ -31,3 +31,5 @@ figcaption,figcaption span,.format-strip .wrap,.step-number,.step-tag,
 @media(max-width:720px){.hero h1{font-size:clamp(44px,10.8vw,70px)}.session-art{padding:18px}.format-strip .wrap{letter-spacing:0}.site-header nav{gap:12px}.brand{font-size:24px}}
 
 .screenshots{padding-block:0 80px}.screenshot-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}.screenshot-grid figure{min-width:0}.screenshot-grid a{display:block;border:1px solid #788877;border-radius:8px;overflow:hidden}.screenshot-grid img{display:block;width:100%;height:auto}.screenshot-grid figcaption{font-size:16px;margin-top:16px}.screenshot-grid figcaption strong{display:block;color:var(--paper)}.screenshot-note{font-size:14px;color:var(--muted);margin-top:24px}@media(max-width:720px){.screenshot-grid{grid-template-columns:1fr}.screenshots{padding-bottom:56px}}
+
+.local-section + .local-section{margin-top:32px}

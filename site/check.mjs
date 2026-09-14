@@ -61,7 +61,7 @@ for (const font of ['Barlow-Regular.ttf', 'Barlow-Medium.ttf', 'BarlowCondensed-
   assert.deepEqual(readFileSync(join(root, 'fonts', font)),
     readFileSync(join(import.meta.dirname, '../apps/retrofeel/assets/fonts', font)), `Font drift: ${font}`);
 }
-assert(readFileSync(join(root, 'index.html'), 'utf8').includes('Built to help develop Variant Hunter'));
+assert(readFileSync(join(root, 'index.html'), 'utf8').includes('Better context for agentic coding'));
 for (const [source, published] of [['LICENSE.md', 'core-licenses.md'], ['LICENSE', 'retrofeel-license.txt']]) {
   assert.deepEqual(readFileSync(join(root, 'legal', published)),
     readFileSync(join(import.meta.dirname, '..', source)), `License source drift: ${source}`);

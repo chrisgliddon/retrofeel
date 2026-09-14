@@ -6,7 +6,7 @@ disableKinds = ['taxonomy', 'term', 'RSS']
 
 [params]
 repositoryURL = '' # Optional source link; leave empty while the repository is private.
-description = 'Built to help develop Variant Hunter. RetroFeel brings gameplay, input, and spoken feedback together for better playtests.'
+description = 'Give your coding agent clearer playtest feedback. RetroFeel brings gameplay, input timing, and spoken notes together so you can explain what needs to change.'
 
 [[module.mounts]]
 source = 'static'

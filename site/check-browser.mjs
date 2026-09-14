@@ -61,6 +61,11 @@ try {
     for (const width of [390, 1440]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(base, { waitUntil: 'networkidle' });
+      // Full-page captures also need images below the viewport to finish loading.
+      await page.locator('img').evaluateAll(async images => {
+        for (const image of images) image.loading = 'eager';
+        await Promise.all(images.map(image => image.decode()));
+      });
       await page.screenshot({ path: `${process.env.SCREENSHOT_DIR}/retrofeel-${width}.png`, fullPage: true });
     }
   }
