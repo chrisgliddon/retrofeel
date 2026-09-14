@@ -1,0 +1,60 @@
+[package]
+name = "retrofeel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "retrofeel — configure libretro cores, record gameplay, export input timelines."
+
+[features]
+default = []
+# When enabled, the build script copies pre-downloaded cores from
+# `apps/retrofeel/bundled-cores/` into `OUT_DIR/cores` so they ship inside the
+# app bundle. Run `scripts/fetch-bundled-cores.sh` first. Manual release packaging
+# may enable this; development builds omit it for speed.
+bundled-cores = []
+
+[dependencies]
+libretro-host = { workspace = true }
+retrofeel-types = { workspace = true }
+retrofeel-export = { workspace = true }
+retrofeel-feel = { workspace = true }
+retrofeel-backend = { workspace = true }
+retrofeel-db = { workspace = true }
+retrofeel-steamcapture = { workspace = true }
+libloading = { workspace = true }
+bevy = { workspace = true, features = ["2d"] }
+cpal = { workspace = true }
+ringbuf = { workspace = true }
+crossbeam-channel = { workspace = true }
+log = { workspace = true }
+env_logger = "0.11"
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+clap = { version = "4.5", features = ["derive"] }
+rfd = { workspace = true }
+hound = { workspace = true }
+serde_json = { workspace = true }
+serde = { workspace = true }
+ron = { workspace = true }
+sha1 = { workspace = true }
+sha2 = { workspace = true }
+image = { workspace = true }
+zip = { workspace = true }
+ureq = { workspace = true }
+tempfile = { workspace = true }
+bzip2 = { workspace = true }
+tar = { workspace = true }
+fs2 = { workspace = true }
+accesskit = "0.21.1"
+bincode = { workspace = true }
+getrandom = { workspace = true }
+libc = { workspace = true }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.5.2"
+objc2-app-kit = { version = "0.2.2", default-features = false, features = ["NSApplication"] }
+objc2-foundation = { version = "0.2.2", default-features = false, features = ["NSArray", "NSNotification", "NSObject", "NSString", "NSURL"] }
+
+[[bin]]
+name = "retrofeel"
+path = "src/main.rs"

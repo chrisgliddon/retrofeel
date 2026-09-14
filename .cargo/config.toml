@@ -1,0 +1,9 @@
+# macOS build configuration for retrofeel.
+# The screencapturekit crate (Steam capture) links against Swift bridge
+# libraries from apple-cf/apple-metal. These need the Swift compatibility
+# libraries and a deployment target matching the Swift code (macOS 13.0+).
+[target.'cfg(target_os = "macos")']
+rustflags = ["-L", "/Library/Developer/CommandLineTools/usr/lib/swift/macosx"]
+
+[env]
+MACOSX_DEPLOYMENT_TARGET = "13.0"

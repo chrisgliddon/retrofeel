@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="document wrap">
+  <a class="back-link" href="/">← Back to RetroFeel</a>
+  <p class="eyebrow">A NOTE TO THE DEVELOPER</p>
+  <h1>{{ .Title }}</h1>
+  <div class="prose">{{ .Content }}</div>
+  <div id="contact-status" role="status" aria-live="polite"></div>
+  <form class="contact-form" action="/contact/" method="post">
+    <label for="name">Your name <span>(optional)</span></label>
+    <input id="name" name="name" autocomplete="name" maxlength="100">
+    <label for="email">Your email</label>
+    <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+    <label for="topic">What’s on your mind?</label>
+    <select id="topic" name="topic"><option value="general">General question</option><option value="feedback">Playtesting and feedback</option><option value="privacy">Privacy or data request</option></select>
+    <label for="message">Your message</label>
+    <textarea id="message" name="message" rows="7" minlength="10" maxlength="5000" required aria-describedby="message-note"></textarea>
+    <div class="form-trap" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+    <p id="message-note">Please leave out passwords, tokens, and sensitive recordings. No attachments.</p>
+    <label class="form-consent"><input type="checkbox" name="consent" value="yes" required><span>I agree to my details being used to respond to this message, as described in the <a href="/privacy/">privacy policy</a>.</span></label>
+    <button class="button" type="submit">Send message <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+    <p class="contact-note">Goes straight to Chris. No mailing list, no account required.</p>
+  </form>
+</section>
+{{ end }}

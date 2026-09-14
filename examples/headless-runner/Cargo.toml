@@ -1,0 +1,20 @@
+[package]
+name = "headless-runner"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Headless libretro runner: load a core, run N frames, dump PNGs + WAV."
+
+[[bin]]
+name = "headless-runner"
+path = "src/main.rs"
+
+[dependencies]
+libretro-host = { workspace = true }
+retrofeel-types = { workspace = true }
+log = { workspace = true }
+env_logger = "0.11"
+image = { workspace = true }
+hound = { workspace = true }
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }

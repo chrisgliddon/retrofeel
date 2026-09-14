@@ -1,0 +1,76 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/libretro-host",
+    "crates/retrofeel-types",
+    "crates/retrofeel-backend",
+    "crates/retrofeel-db",
+    "crates/retrofeel-export",
+    "crates/retrofeel-feel",
+    "crates/retrofeel-steamcapture",
+    "crates/retrofeel-transcriber-worker",
+    "apps/retrofeel",
+    "apps/retrofeel-deck-recorder",
+    "examples/headless-runner",
+    "crates/libretro-host/tests/mock-core",
+]
+default-members = ["examples/headless-runner"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+repository = "https://github.com/chrisgliddon/retrofeel-public-candidate"
+authors = ["Chris Gliddon"]
+
+[workspace.dependencies]
+# Internal crates
+libretro-host = { path = "crates/libretro-host" }
+retrofeel-types = { path = "crates/retrofeel-types" }
+retrofeel-backend = { path = "crates/retrofeel-backend" }
+retrofeel-db = { path = "crates/retrofeel-db" }
+retrofeel-export = { path = "crates/retrofeel-export" }
+retrofeel-feel = { path = "crates/retrofeel-feel" }
+retrofeel-steamcapture = { path = "crates/retrofeel-steamcapture" }
+
+# Shared deps (pinned at the workspace level so all crates resolve identically)
+libloading = "0.8"
+thiserror = "1.0"
+log = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ron = "0.8"
+directories = "5.0"
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
+hound = "3.5"
+bevy = "0.18"
+cpal = "0.15"
+ringbuf = "0.4"
+crossbeam-channel = "0.5"
+anyhow = "1.0"
+md5 = "0.7"
+sha1 = "0.10"
+sha2 = "0.10"
+tempfile = "3"
+rfd = "0.15"
+rusqlite = { version = "0.31", features = ["bundled"] }
+scraper = "0.20.0"
+ureq = "2.12.1"
+zip = "2.4.2"
+bincode = "1.3"
+getrandom = "0.2"
+sherpa-onnx = "=1.13.4"
+tar = "0.4"
+bzip2 = "0.4"
+fs2 = "0.4"
+libc = "0.2"
+
+[profile.release]
+debug = false
+lto = "thin"
+codegen-units = 1
+
+# Mock core is a cdylib so it can be dlopen'd by libretro-host tests.
+[profile.dev.package.mock-core]
+opt-level = 1

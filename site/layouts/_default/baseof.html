@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>{{ if not .IsHome }}{{ .Title }} · {{ end }}RetroFeel</title>
+  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="icon" href="/images/tigerwolf-logo.svg" type="image/svg+xml">
+  {{ $css := resources.Get "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  <meta property="og:title" content="{{ if not .IsHome }}{{ .Title }} · {{ end }}RetroFeel">
+  <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="/" aria-label="RetroFeel home"><img src="/images/tigerwolf-logo.svg" width="42" height="42" alt=""><span>RetroFeel<span class="brand-dot">.</span></span></a>
+    <nav aria-label="Main navigation"><a href="/#workflow">The workflow</a><a href="/privacy/">Privacy</a><a class="nav-contact" href="/contact/">Say hello <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></nav>
+  </header>
+  <main id="main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
+  <footer class="site-footer wrap">
+    <div class="studio"><img src="/images/tigerwolf-logo.svg" width="48" height="48" alt="Tiger/Wolf Games logo"><div><strong>Tiger/Wolf Games</strong><span>Independent tools. Thoughtful games.<br>British Columbia, Canada.</span></div></div>
+    <div class="footer-links"><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="/licenses/">Licenses</a><a href="/contact/">Contact</a></div>
+    <p class="legal-line">© {{ now.Year }} Chris Gliddon, doing business as Tiger/Wolf Games.</p>
+  {{ with .Site.Params.repositoryURL }}<a href="{{ . }}" rel="noopener noreferrer">Source code</a>{{ end }}
+</footer>
+</body>
+</html>

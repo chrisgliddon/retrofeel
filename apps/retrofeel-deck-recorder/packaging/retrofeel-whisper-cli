@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+
+runtime_dir=${RETROFEEL_WHISPER_RUNTIME_DIR:-"$HOME/.local/lib/retrofeel/whisper-cpp-v1.9.2"}
+executable="$runtime_dir/whisper-cli"
+
+if [ ! -x "$executable" ]; then
+    echo "whisper.cpp runtime not found: $executable" >&2
+    exit 1
+fi
+
+if [ -n "${LD_LIBRARY_PATH:-}" ]; then
+    export LD_LIBRARY_PATH="$runtime_dir:$LD_LIBRARY_PATH"
+else
+    export LD_LIBRARY_PATH="$runtime_dir"
+fi
+
+exec "$executable" "$@"

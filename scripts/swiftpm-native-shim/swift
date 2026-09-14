@@ -1,0 +1,15 @@
+#!/bin/sh
+# Workaround for Swift 6.4 under Command Line Tools (no full Xcode):
+# SwiftPM's default 'swiftbuild' engine fails at session init with
+# "Could not initialize build system … Unknown error parsing property list".
+# The screencapturekit/apple-* cargo build scripts shell out to `swift build`,
+# so this shim forces the legacy native build system for those invocations.
+#
+# Usage: PATH="$(git rev-parse --show-toplevel)/scripts/swiftpm-native-shim:$PATH" cargo build …
+# Durable fix: install full Xcode (or a CLT release where swiftbuild works)
+# and remove this shim from PATH.
+if [ "$1" = "build" ]; then
+  shift
+  exec /usr/bin/swift build --build-system native "$@"
+fi
+exec /usr/bin/swift "$@"

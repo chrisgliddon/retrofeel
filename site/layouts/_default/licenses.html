@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ $tracker := resources.Get "legal/core-licenses.md" }}
+{{ $license := resources.Get "legal/retrofeel-license.txt" }}
+{{ if not $tracker }}{{ errorf "Missing authoritative repository LICENSE.md" }}{{ end }}
+{{ if not $license }}{{ errorf "Missing authoritative repository LICENSE" }}{{ end }}
+<article class="document wrap license-document">
+  <a class="back-link" href="/">← Back to RetroFeel</a>
+  <p class="eyebrow">BUILT ON SHARED WORK</p>
+  <h1>{{ .Title }}</h1>
+  <div class="prose">
+    {{ .Content }}
+    <h2>RetroFeel’s license</h2>
+    <pre class="license-text">{{ $license.Content }}</pre>
+    <p><a href="{{ $license.RelPermalink }}">Download RetroFeel’s license text</a></p>
+    <h2 id="core-tracker">Libretro core license tracker</h2>
+    {{ $preamble := index (split $tracker.Content "| Core |") 0 }}
+    {{ replaceRE "(?m)^# " "### " $preamble | markdownify }}
+    <p><a href="{{ $tracker.RelPermalink }}">Download the complete, unmodified tracker (Markdown)</a>. The table below preserves every core, license declaration, and metadata source URL.</p>
+    <p class="table-hint">On a small screen, scroll the table horizontally to see every column.</p>
+    <div class="license-table" role="region" aria-labelledby="core-tracker" tabindex="0">
+      <table><thead><tr><th scope="col">Core</th><th scope="col">Display Name</th><th scope="col">License</th><th scope="col">Source</th></tr></thead><tbody>
+      {{ range split $tracker.Content "\n" }}
+        {{ if and (hasPrefix . "| ") (not (hasPrefix . "| Core |")) }}
+          {{ $cells := split (strings.TrimSuffix " |" (strings.TrimPrefix "| " .)) " | " }}
+          {{ if ne (len $cells) 4 }}{{ errorf "Unexpected license tracker row: %s" . }}{{ end }}
+          <tr><td>{{ index $cells 0 }}</td><td>{{ index $cells 1 }}</td><td>{{ index $cells 2 }}</td><td><a href="{{ index $cells 3 }}">{{ index $cells 3 }}</a></td></tr>
+        {{ end }}
+      {{ end }}
+      </tbody></table>
+    </div>
+    <h2>Website fonts</h2>
+    <p>This site uses the same Barlow and Barlow Condensed fonts as the desktop app, by the Barlow Project Authors, under the <a href="/fonts/OFL.txt">SIL Open Font License 1.1</a>.</p>
+  </div>
+</article>
+{{ end }}

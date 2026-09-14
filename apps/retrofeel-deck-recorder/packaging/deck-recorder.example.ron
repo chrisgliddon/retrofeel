@@ -1,0 +1,112 @@
+(
+    steam_root: "/home/deck/.local/share/Steam",
+    recordings_dir: "/home/deck/retrofeel-recordings",
+    ffprobe: "/usr/bin/ffprobe",
+    ffmpeg: "/usr/bin/ffmpeg",
+    input_ring_seconds: 5,
+    clip_timeout_seconds: 60,
+    // Every Steam virtual pad and every exact controller match below is
+    // recorded concurrently for every game. Keep this list narrow: it is the
+    // trust boundary for direct physical HID access.
+    physical_gamepad_allowlist: [],
+    // Keyboard and mouse evdev devices are never captured implicitly. Add an
+    // exact match here after identifying the device with `doctor`. A stable
+    // unique_id or physical_path is required; virtual/uinput devices also
+    // require allow_virtual: true.
+    input_device_allowlist: [
+        // (
+        //     vendor: 0x1234,
+        //     product: 0x5678,
+        //     name: "RetroFeel Test Keyboard and Mouse",
+        //     unique_id: Some("retrofeel-kbm-1"),
+        //     capabilities: [keyboard, mouse],
+        //     allow_virtual: true,
+        // ),
+    ],
+    finalize_retry_interval_seconds: 2,
+    finalize_retry_attempts: 10,
+    // Exact game IDs can be mirrored into portable, SMB-visible archives.
+    // The watcher reconciles missing complete sessions in a background thread;
+    // unrelated and degraded sessions are never copied.
+    recording_archives: [
+        // (
+        //     game_id: "9223372058363166720",
+        //     display_name: "Example Workshop",
+        //     destination_dir: "/home/deck/Videos/Example-Workshop-History",
+        //     format: mp4,
+        // ),
+        // (
+        //     game_id: "9223372041183297536",
+        //     display_name: "Example Meadow World",
+        //     destination_dir: "/home/deck/Videos/Example-Meadow-World-History",
+        //     format: mp4,
+        // ),
+        // (
+        //     game_id: "9223372045478264832",
+        //     display_name: "Example Meadow Unity",
+        //     destination_dir: "/home/deck/Videos/Example-Meadow-Unity-History",
+        //     format: mp4,
+        // ),
+        // (
+        //     game_id: "9223372062658134016",
+        //     display_name: "Example Meadow Blocks",
+        //     destination_dir: "/home/deck/Videos/Example-Meadow-Blocks-History",
+        //     format: mp4,
+        // ),
+    ],
+    archive_sync_interval_seconds: 60,
+    transcription: (
+        // Steam exposes one mixed game/system/microphone track. This produces
+        // steam-audio-transcript.srt without labelling it as mic-only.
+        automatic: false,
+        executable: "/home/deck/.local/bin/retrofeel-whisper-cli",
+        model: None,
+        model_id: "whisper-base.en",
+        language: "en",
+        threads: 4,
+    ),
+    // The legacy single-channel field remains readable. New configurations
+    // should use youtube_publishers below.
+    youtube: None,
+    youtube_publishers: [
+    // (
+    //     publisher_id: "example-workshop",
+    //     // Fictional IDs demonstrate routing several games to one publisher.
+    //     game_ids: [
+    //         "9223372058363166720",
+    //         "9223372054068199424",
+    //         "9223372049773232128",
+    //     ],
+    //     enabled: false,
+    //     upload_not_before: "2026-01-01T00:00:00Z",
+    //     oauth_client_path: "/home/deck/.local/state/retrofeel/youtube/oauth-client.json",
+    //     oauth_token_path: "/home/deck/.local/state/retrofeel/youtube/example-workshop/oauth-token.json",
+    //     expected_channel_id: "<EXACT_EXAMPLE_WORKSHOP_CHANNEL_ID>",
+    //     privacy_status: private,
+    //     category: gaming,
+    //     caption_language: "en",
+    //     timezone: "America/Vancouver",
+    //     retention_days: 7,
+    //     idle_only: true,
+    // ),
+    // (
+    //     publisher_id: "example-meadow-world",
+    //     game_ids: [
+    //         "9223372041183297536",
+    //         "9223372045478264832",
+    //         "9223372062658134016",
+    //     ],
+    //     enabled: false,
+    //     upload_not_before: "2026-01-01T00:00:00Z",
+    //     oauth_client_path: "/home/deck/.local/state/retrofeel/youtube/oauth-client.json",
+    //     oauth_token_path: "/home/deck/.local/state/retrofeel/youtube/example-meadow-world/oauth-token.json",
+    //     expected_channel_id: "<EXACT_EXAMPLE_MEADOW_WORLD_CHANNEL_ID>",
+    //     privacy_status: private,
+    //     category: gaming,
+    //     caption_language: "en",
+    //     timezone: "America/Vancouver",
+    //     retention_days: 7,
+    //     idle_only: true,
+    // ),
+    ],
+)

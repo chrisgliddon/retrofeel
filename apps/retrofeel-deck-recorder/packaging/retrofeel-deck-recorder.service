@@ -1,0 +1,12 @@
+[Unit]
+Description=RetroFeel Steam Game Recording input companion
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/retrofeel-deck-recorder watch
+Restart=on-failure
+RestartSec=2
+Environment=RUST_LOG=retrofeel_deck_recorder=info
+
+[Install]
+WantedBy=default.target

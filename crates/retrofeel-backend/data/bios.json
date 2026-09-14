@@ -1,0 +1,119 @@
+[
+  {
+    "system_id": "psx",
+    "system": "Sony PlayStation",
+    "name": "SCPH5500 Japanese BIOS",
+    "filename": "scph5500.bin",
+    "md5": "8dd7d5296a650fac7319bce665a6a53c",
+    "required": true
+  },
+  {
+    "system_id": "psx",
+    "system": "Sony PlayStation",
+    "name": "SCPH5501 US BIOS",
+    "filename": "scph5501.bin",
+    "md5": "490f666e1afb15b7362b406ed1cea246",
+    "required": true
+  },
+  {
+    "system_id": "psx",
+    "system": "Sony PlayStation",
+    "name": "SCPH5502 European BIOS",
+    "filename": "scph5502.bin",
+    "md5": "32736f17079d0b2b7024407c39bd3050",
+    "required": true
+  },
+  {
+    "system_id": "gba",
+    "system": "Game Boy Advance",
+    "name": "GBA BIOS",
+    "filename": "gba_bios.bin",
+    "md5": "a860e8c0b6d573d191e4ec7db1b1e4f6",
+    "required": true
+  },
+  {
+    "system_id": "segacd",
+    "system": "Sega CD / Mega-CD",
+    "name": "Sega CD Model 2 US BIOS",
+    "filename": "bios_CD_U.bin",
+    "md5": "2efd74e3232ff260e371b99f84024f7f",
+    "required": true
+  },
+  {
+    "system_id": "segacd",
+    "system": "Sega CD / Mega-CD",
+    "name": "Mega-CD Model 1 Japanese BIOS",
+    "filename": "bios_CD_J.bin",
+    "required": false
+  },
+  {
+    "system_id": "segacd",
+    "system": "Sega CD / Mega-CD",
+    "name": "Mega-CD Model 1 European BIOS",
+    "filename": "bios_CD_E.bin",
+    "required": false
+  },
+  {
+    "system_id": "fds",
+    "system": "Famicom Disk System",
+    "name": "Famicom Disk System BIOS",
+    "filename": "disksys.rom",
+    "required": true
+  },
+  {
+    "system_id": "lynx",
+    "system": "Atari Lynx",
+    "name": "Atari Lynx Boot ROM",
+    "filename": "lynxboot.img",
+    "required": true
+  },
+  {
+    "system_id": "colecovision",
+    "system": "ColecoVision",
+    "name": "ColecoVision BIOS",
+    "filename": "colecovision.rom",
+    "required": true
+  },
+  {
+    "system_id": "pcfx",
+    "system": "PC-FX",
+    "name": "PC-FX BIOS",
+    "filename": "pcfx.rom",
+    "required": true
+  },
+  {
+    "system_id": "saturn",
+    "system": "Sega Saturn",
+    "name": "Saturn Japanese BIOS",
+    "filename": "sega_101.bin",
+    "required": false
+  },
+  {
+    "system_id": "saturn",
+    "system": "Sega Saturn",
+    "name": "Saturn US/EU BIOS",
+    "filename": "mpr-17933.bin",
+    "required": false
+  },
+  {
+    "system_id": "pce",
+    "system": "PC Engine CD / TurboGrafx-CD",
+    "name": "System Card 3.0",
+    "filename": "syscard3.pce",
+    "required": false
+  },
+  {
+    "system_id": "gb",
+    "system": "Game Boy",
+    "name": "Game Boy Boot ROM (optional)",
+    "filename": "gb_bios.bin",
+    "required": false
+  },
+  {
+    "system_id": "gbc",
+    "system": "Game Boy Color",
+    "name": "Game Boy Color Boot ROM (optional)",
+    "filename": "gbc_bios.bin",
+    "required": false
+  }
+]

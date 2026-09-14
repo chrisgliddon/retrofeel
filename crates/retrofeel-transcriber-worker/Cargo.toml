@@ -1,0 +1,14 @@
+[package]
+name = "retrofeel-transcriber-worker"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Crash-isolated local transcription worker for RetroFeel"
+
+[dependencies]
+retrofeel-types = { workspace = true }
+sherpa-onnx = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+hound = { workspace = true }
+tempfile = { workspace = true }

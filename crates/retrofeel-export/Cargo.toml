@@ -1,0 +1,13 @@
+[package]
+name = "retrofeel-export"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Engine emitters over the retrofeel InputFrame IR (Bevy/Unity/Godot/Unreal)."
+
+[dependencies]
+retrofeel-types = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+ron = { workspace = true }
+thiserror = { workspace = true }

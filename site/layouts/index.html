@@ -1,0 +1,45 @@
+{{ define "main" }}
+<section class="hero wrap" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="signal" aria-hidden="true"></span> Built to help develop Variant Hunter</p>
+    <h1 id="hero-title">Keep the play.<br>Understand<br><em>the feeling.</em></h1>
+    <p class="intro">I built RetroFeel to help me develop Variant Hunter: to see what happened, what I pressed, and what I said while playtesting. It keeps that context together, so the next session can become a better game.</p>
+    <div class="hero-actions"><a class="button" href="#workflow">Explore the workflow <span aria-hidden="true">↓</span></a><span class="build-note">Made for real playtests.<br>Still in active development.</span></div>
+  </div>
+  <figure class="session-art" aria-label="Illustration of video, input, and transcript tracks aligned within one recording">
+    <div class="session-top"><span class="eyebrow">Session / 001</span><span class="session-chip">ALL IN SYNC</span></div>
+    <div class="session-symbol"><img src="/images/tigerwolf-logo.svg" width="184" height="184" alt=""><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span></div>
+    <div class="time-ruler" aria-hidden="true"><span>00:12</span><span>00:13</span><span>00:14</span><span>00:15</span></div>
+    <div class="tracks" aria-hidden="true">
+      <div class="track video-track"><span class="track-label">01 / VIDEO</span><div class="frames"><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="track input-track"><span class="track-label">02 / INPUT</span><div class="inputs"><b>→</b><span></span><b>A</b><span></span><b>→</b><b>A</b></div></div>
+      <div class="track voice-track"><span class="track-label">03 / VOICE</span><div class="wave">{{ range seq 36 }}<i></i>{{ end }}</div></div>
+      <div class="playhead"></div>
+    </div>
+    <div class="transcript-example"><span class="timestamp">00:14</span><p>“That jump felt a little late.”</p></div>
+    <figcaption>Three tracks. One story.<span>Illustrative session, not an app screenshot.</span></figcaption>
+  </figure>
+</section>
+<div class="format-strip"><div class="wrap"><span>Local recording</span><span>Frame-aligned input</span><span>Timestamped transcripts</span><span>Optional YouTube archives</span></div></div>
+<section class="workflow wrap" id="workflow" aria-labelledby="workflow-title">
+  <div class="section-heading"><p class="eyebrow">FROM “SOMETHING FELT OFF” TO “FOUND IT”</p><h2 id="workflow-title">Less guesswork.<br>More context.</h2><p>A recording shows the moment. The input and your words help explain it.</p></div>
+  <div class="steps">
+    <article><span class="step-number">01</span><h3>Play naturally.</h3><p>Record gameplay on your computer, or use the Steam Deck companion alongside Steam Game Recording. Keep the session on your device.</p><span class="step-tag">CAPTURE</span></article>
+    <article><span class="step-number">02</span><h3>Find the moment.</h3><p>Bring video, input timing, and available transcripts into the same conversation. Follow a button press back to the moment that needs attention.</p><span class="step-tag">REVIEW</span></article>
+    <article><span class="step-number">03</span><h3>Carry it forward.</h3><p>Export input timelines for Bevy, Unity, Godot, or Unreal. Optionally archive eligible MP4s and subtitles to your own YouTube channel.</p><span class="step-tag">SHARE WITH INTENT</span></article>
+  </div>
+</section>
+<section class="screenshots wrap" aria-labelledby="screenshots-title">
+  <div class="section-heading"><p class="eyebrow">INSIDE RETROFEEL</p><h2 id="screenshots-title">Your library.<br>Your playtest setup.</h2><p>A look at the desktop app. Open either screenshot to see the interface at full size.</p></div>
+  <div class="screenshot-grid">
+    <figure><a href="/images/retrofeel-library.png" aria-label="Open the RetroFeel library screenshot at full size"><img src="/images/retrofeel-library.png" width="1280" height="800" loading="lazy" decoding="async" alt="RetroFeel’s dark library view with collection tabs, search, and three fictional games using generated covers."></a><figcaption><strong>Keep your library together.</strong> Browse games and move between recordings, screenshots, and settings. Shown with fictional library fixtures.</figcaption></figure>
+    <figure><a href="/images/retrofeel-transcription.png" aria-label="Open the RetroFeel transcription settings screenshot at full size"><img src="/images/retrofeel-transcription.png" width="1280" height="800" loading="lazy" decoding="async" alt="RetroFeel’s light-theme transcription settings showing microphone-only audio, an external Whisper model picker, and a local speech model download option."></a><figcaption><strong>Choose local transcription.</strong> Configure microphone transcription and select a local speech model. Shown before a model is installed.</figcaption></figure>
+  </div>
+  <p class="screenshot-note">Actual Linux desktop captures. Example data; no personal recordings or third-party game artwork.</p>
+</section>
+<section class="local-section wrap" aria-labelledby="local-title">
+  <div><p class="eyebrow">YOUR SESSION. YOUR CALL.</p><h2 id="local-title">Local first.<br>Online when you choose.</h2></div>
+  <div class="local-copy"><p>Connecting a YouTube channel is optional. Configured publishing supports Private uploads, checks the destination channel, and pauses uploads while Steam gameplay is running.</p><p>Recordings can include voices, chat, and notifications. Private uploads still send content to Google. Review what you capture and get permission from other participants.</p><a class="text-link" href="/privacy/">How RetroFeel handles data <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>
+</section>
+<section class="closing wrap"><p class="eyebrow">BUILT IN BRITISH COLUMBIA</p><h2>Made for my game.<br>Shaped by real playtests.</h2><p>I’m Chris, the developer behind Tiger/Wolf Games. RetroFeel grew out of making <a class="text-link" href="https://varianthunter.com/">Variant Hunter</a> and wanting a clearer picture of how it feels to play.</p><a class="button" href="/contact/">Let’s talk RetroFeel <span aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></section>
+{{ end }}

@@ -1,0 +1,39 @@
+[package]
+name = "retrofeel-deck-recorder"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Frame-aligned Steam Game Recording input companion for Steam Deck."
+
+[dependencies]
+retrofeel-types = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+ron = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+libc = { workspace = true }
+clap = { version = "4.5", features = ["derive"] }
+env_logger = "0.11"
+hidreport = "0.6"
+tempfile = { workspace = true }
+ureq = { workspace = true }
+sha2 = { workspace = true }
+getrandom = { workspace = true }
+base64 = "0.22"
+roxmltree = "0.20"
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde", "std"] }
+chrono-tz = "0.10"
+url = "2.5"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+evdev = "0.13"
+
+[lib]
+name = "retrofeel_deck_recorder"
+path = "src/lib.rs"
+
+[[bin]]
+name = "retrofeel-deck-recorder"
+path = "src/main.rs"

@@ -1,0 +1,24 @@
+[package]
+name = "retrofeel-steamcapture"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "macOS screen + input capture for Steam/Wine game recording (ScreenCaptureKit + CGEventTap)."
+
+[dependencies]
+retrofeel-types = { workspace = true }
+crossbeam-channel = { workspace = true }
+log = { workspace = true }
+thiserror = { workspace = true }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+screencapturekit = "8"
+core-graphics = "0.24"
+core-foundation = "0.10"
+libc = { workspace = true }
+objc2-app-kit = { version = "0.3.2", default-features = false, features = ["NSRunningApplication", "libc"] }
+objc2-foundation = { version = "0.3.2", default-features = false, features = ["NSArray", "NSEnumerator"] }
+objc2-game-controller = { version = "0.3.2", default-features = false, features = ["GCController", "GCControllerAxisInput", "GCControllerButtonInput", "GCControllerDirectionPad", "GCControllerElement", "GCDevice", "GCExtendedGamepad", "GCPhysicalInputProfile"] }
+
+[dev-dependencies]
+tempfile = { workspace = true }

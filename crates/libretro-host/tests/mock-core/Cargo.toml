@@ -1,0 +1,9 @@
+[package]
+name = "mock-core"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "mock_core"
+crate-type = ["cdylib"]

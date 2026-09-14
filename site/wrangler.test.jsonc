@@ -1,0 +1,62 @@
+// Local email simulator only. Never deploy this fictional configuration.
+{
+  "name": "retrofeel-contact-test",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-04",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/contact",
+      "/contact/*"
+    ],
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "ratelimits": [
+    {
+      "name": "CONTACT_LIMIT",
+      "namespace_id": "1",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    },
+    {
+      "name": "CONTACT_TOTAL_LIMIT",
+      "namespace_id": "2",
+      "simple": {
+        "limit": 20,
+        "period": 60
+      }
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": false
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01
+    }
+  },
+  "vars": {
+    "CONTACT_RECIPIENT": "maintainer@example.com",
+    "CONTACT_SENDER": "contact@example.com"
+  },
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL",
+      "allowed_destination_addresses": [
+        "maintainer@example.com"
+      ],
+      "allowed_sender_addresses": [
+        "contact@example.com"
+      ]
+    }
+  ]
+}

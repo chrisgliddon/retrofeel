@@ -1,0 +1,18 @@
+[package]
+name = "libretro-host"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Safe Rust wrapper over the libretro C ABI (in-process core loading)."
+
+[dependencies]
+libloading = { workspace = true }
+thiserror = { workspace = true }
+log = { workspace = true }
+retrofeel-types = { workspace = true }
+
+[build-dependencies]
+
+[dev-dependencies]
+# A trivial libretro core built in-repo so tests need no external binaries.
+mock-core = { path = "tests/mock-core" }

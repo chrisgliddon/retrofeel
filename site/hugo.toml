@@ -1,0 +1,36 @@
+baseURL = 'https://retrofeel.org/'
+locale = 'en-CA'
+title = 'RetroFeel'
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[params]
+repositoryURL = '' # Optional source link; leave empty while the repository is private.
+description = 'Built to help develop Variant Hunter. RetroFeel brings gameplay, input, and spoken feedback together for better playtests.'
+
+[[module.mounts]]
+source = 'static'
+target = 'static'
+
+[[module.mounts]]
+source = '../apps/retrofeel/assets/fonts'
+target = 'static/fonts'
+
+[[module.mounts]]
+source = 'assets'
+target = 'assets'
+
+[[module.mounts]]
+source = '../LICENSE.md'
+target = 'assets/legal/core-licenses.md'
+
+[[module.mounts]]
+source = '../LICENSE'
+target = 'assets/legal/retrofeel-license.txt'
+
+[markup.goldmark.renderer]
+unsafe = false
+
+[outputs]
+home = ['HTML']
+page = ['HTML']
